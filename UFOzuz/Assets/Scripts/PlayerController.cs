@@ -5,8 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     Rigidbody2D rb2d;
-
-
+    private int count = 0;
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
@@ -26,6 +25,7 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.CompareTag("PickUp"))
         {
+            count++;
             Destroy(collision.gameObject); 
         }
     }
