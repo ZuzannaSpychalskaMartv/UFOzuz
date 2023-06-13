@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Threading;
 
 public class PlayerController : MonoBehaviour
 {
@@ -43,14 +44,16 @@ public class PlayerController : MonoBehaviour
         {
             winText.gameObject.SetActive(true);
             scoreText.gameObject.SetActive(false);
-            StartCoroutine(WaitForFunction());
-            SceneManager.LoadScene("Level02");
+            StartCoroutine(StopTime());
         }
     
     }
-    IEnumerator WaitForFunction()
+   
+    IEnumerator StopTime()
     {
-        yeld return new WaitForSeconds(3);
+        yield return new WaitForSeconds(5);
+        SceneManager.LoadScene("Level02");
 
     }
+
 }
