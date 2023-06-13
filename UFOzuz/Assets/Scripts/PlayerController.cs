@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+
+    public Text scoreText;
+    public Text winText;
     Rigidbody2D rb2d;
     private int count = 0;
     void Start()
@@ -26,8 +30,21 @@ public class PlayerController : MonoBehaviour
         if (collision.CompareTag("PickUp"))
         {
             count++;
-            Destroy(collision.gameObject); 
+            Destroy(collision.gameObject);
+            UpdateScoreText();
         }
+    }
+
+    void UpdateScoreText()
+    {
+        scoreText.text = "Wynik: " + count;
+        if (count == 3)
+        {
+            winText.gameObject.SetActive(true);
+            scoreText.gameObject.SetActive(false);
+
+        }
+    
     }
 
 }
